@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_weight="0.2"
+        >
+
+        <Button
+            android:id="@+id/nickchange"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/ic_setting"
+            android:visibility="invisible"
+            style="?android:attr/borderlessButtonStyle"
+            ></Button>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:layout_weight="7"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/img" />
+
+        <TextView
+            android:id="@+id/nickname"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Bobby"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/picture"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/ic_add"
+            style="?android:attr/borderlessButtonStyle"
+            ></Button>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="1.5">
+
+
+    <TextView
+        android:id="@+id/anything"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:fontFamily="@font/montserrat_regular"
+        android:text="Hi My name is _______ Come visit me in California"
+        android:textAlignment="center"
+        android:textSize="16sp" />
+    </RelativeLayout>
+
+    <GridLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="0.3"
+        android:orientation="horizontal"
+        android:columnCount="5"
+        >
+
+        <TextView
+            android:id="@+id/Photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="100\n Photos"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/line1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="   |   "
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_weight="1" />
+
+
+        <TextView
+            android:id="@+id/Comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="100\n Comments"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/line2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="   |   "
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/Records"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_weight="1"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="24\n Records"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+
+    </GridLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center">
+
+
+        <ImageView
+            android:id="@+id/image2"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="0dp"
+            android:src="@drawable/img_men_category" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="489dp"
+        android:layout_weight="4"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/about_text_title4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_camera"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Life4Cut "
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textSize="40sp"
+            app:fontFamily="@font/montserrat_medium_600" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="90dp"
+            android:src="@drawable/robotmain"></ImageView>
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_weight="6"
+        android:layout_width="match_parent"
+        android:layout_height="529dp"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/Username"
+            android:layout_width="300dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="0dp"
+            android:fontFamily="@font/montserrat_alternates_regular"
+            android:hint="E-mail"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:maxLines="1"
+            />
+
+        <EditText
+            android:id="@+id/Password"
+            android:layout_width="300dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="70dp"
+            android:fontFamily="@font/montserrat_alternates_regular"
+            android:password="true"
+            android:hint="Password"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:maxLines="1"
+          />
+
+        <TextView
+            android:id="@+id/about_text_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_medium_600"
+            android:text="E-mail"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/top_banner_background"
+            android:textSize="12sp"
+            android:layout_marginTop="0dp"
+            app:fontFamily="@font/montserrat_medium_600"
+            />
+
+        <TextView
+            android:id="@+id/about_text_title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginTop="70dp"
+            android:fontFamily="@font/montserrat_medium_600"
+            android:text="Password"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/top_banner_background"
+            app:fontFamily="@font/montserrat_medium_600"
+             />
+
+        <Button
+            android:id="@+id/next4"
+            style="@style/UploadInputView"
+            android:layout_width="133dp"
+            android:layout_height="35dp"
+            android:background="@drawable/btn_upload"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_alignRight="@+id/Password"
+            android:layout_alignLeft="@+id/Password"
+            android:layout_marginTop="150dp"
+            android:text="Login"
+            />
+
+        <Button
+            android:id="@+id/next"
+            style="@style/UploadInputView"
+            android:layout_width="133dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="190dp"
+            android:background="@drawable/btn_upload"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_alignRight="@+id/Password"
+            android:layout_alignLeft="@+id/Password"
+            android:text="Signup"
+            />
+
+        <Button
+            android:id="@+id/nexts"
+            android:layout_width="133dp"
+            android:layout_height="34dp"
+            android:layout_alignLeft="@+id/Password"
+            android:layout_alignRight="@+id/Password"
+            android:layout_marginTop="270dp"
+            android:background="#00FFFFFF"
+            android:backgroundTint="#00FFFFFF"
+            android:visibility="invisible"/>
+
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
