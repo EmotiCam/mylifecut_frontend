@@ -27,21 +27,27 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
+        <TextView
+            android:id="@+id/ai"
+            android:layout_width="192dp"
+            android:layout_height="174dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/word_cloud"
+            android:gravity="center"
+            android:paddingRight="15dp"
+            android:text="Hello World"
+            android:textAlignment="center" />
+
         <ImageView
             android:id="@+id/img"
-            android:layout_width="210dp"
-            android:layout_height="350dp"
-            android:src="@drawable/robotmain" />
 
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="161dp"
-            android:layout_marginLeft="190dp"
-            android:background="@drawable/word_cloud"
-            android:text="Playing in the pool makes me very happy"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:paddingLeft="13dp"/>
+            android:layout_width="163dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="200dp"
+            android:src="@drawable/robotb" />
+
+
 
     </RelativeLayout>
 

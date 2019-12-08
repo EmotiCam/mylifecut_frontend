@@ -65,6 +65,18 @@
     </string-array>
 
     <string-array name="Spinner_items">
+        <item>All Records</item>
+        <item>Happiness</item>
+        <item>Sadness</item>
+        <item>Neutral</item>
+        <item>Anger</item>
+        <item>Surprise</item>
+        <item>Contempt</item>
+        <item>Disgust</item>
+        <item>Fear</item>
+    </string-array>
+
+    <string-array name="Spinner_items_home">
         <item>Happiness</item>
         <item>Sadness</item>
         <item>Neutral</item>
