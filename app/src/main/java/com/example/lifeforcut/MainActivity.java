@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         try{
             tok = getIntent().getStringExtra("EXTRA_SESSION_ID");
         }
@@ -104,9 +105,6 @@ public class MainActivity extends AppCompatActivity implements
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setDisplayShowTitleEnabled(false);
-
-        //cloudinary
-        MediaManager.init(this);
 
         txt = findViewById(R.id.textView123);
 
@@ -160,6 +158,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public void onInputSetting(String next) {
         Intent intent = new Intent(this, ActivityChangeNick.class);
+        intent.putExtra("TOKEN", tok);
         startActivity(intent);
     }
 
@@ -200,12 +199,9 @@ public class MainActivity extends AppCompatActivity implements
                         public void onStart(String requestId) {
 
                         }
-
                         @Override
                         public void onProgress(String requestId, long bytes, long totalBytes) {
-
                         }
-
                         @Override
                         public void onSuccess(String requestId, Map resultData) {
                             if (resultData != null && resultData.size() > 0) {
@@ -221,8 +217,6 @@ public class MainActivity extends AppCompatActivity implements
 
                                 }
                             }
-
-
                         }
 
                         @Override
@@ -260,7 +254,6 @@ public class MainActivity extends AppCompatActivity implements
                     String content = "";
                     content += "ID " + post.getComment() + "\n";
                     //Toast.makeText(getApplication(), post.created_at , Toast.LENGTH_LONG).show();
-
                 }
             }
 

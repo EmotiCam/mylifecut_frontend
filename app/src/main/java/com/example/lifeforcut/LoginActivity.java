@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.cloudinary.android.MediaManager;
+
 import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +32,8 @@ public class LoginActivity extends AppCompatActivity
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //cloudinary
+        MediaManager.init(this);
 
         //display first fragment as about
         getSupportFragmentManager().beginTransaction().replace(R.id.category_logincontainer,
@@ -106,9 +110,7 @@ public class LoginActivity extends AppCompatActivity
     public void PostSignup(SignupInfo usr){
 
         UserSign post = new UserSign(usr.email, usr.password, usr.confirm);
-
         Call<User> call =jsonPlaceHolderApi.registration(post);
-
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
