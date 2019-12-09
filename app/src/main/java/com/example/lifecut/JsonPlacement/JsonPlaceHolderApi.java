@@ -4,9 +4,9 @@ import com.example.lifecut.DjangoData;
 import com.example.lifecut.DjangoGet;
 import com.example.lifecut.Information;
 import com.example.lifecut.Information2;
-import com.example.lifecut.ObjectFiles.Chat;
-import com.example.lifecut.ObjectFiles.User;
-import com.example.lifecut.ObjectFiles.UserSign;
+import com.example.lifecut.Chat;
+import com.example.lifecut.User;
+import com.example.lifecut.UserSign;
 import com.example.lifecut.UserPass;
 
 import java.util.List;

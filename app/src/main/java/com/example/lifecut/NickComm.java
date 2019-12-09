@@ -1,4 +1,4 @@
-package com.example.lifecut.ObjectFiles;
+package com.example.lifecut;
 
 import java.io.Serializable;
 

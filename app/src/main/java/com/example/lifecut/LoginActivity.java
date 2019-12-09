@@ -6,8 +6,6 @@ import android.widget.Toast;
 
 import com.cloudinary.android.MediaManager;
 import com.example.lifecut.JsonPlacement.JsonPlaceHolderApi;
-import com.example.lifecut.ObjectFiles.User;
-import com.example.lifecut.ObjectFiles.UserSign;
 
 import java.util.Map;
 

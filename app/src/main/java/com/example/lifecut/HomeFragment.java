@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.example.lifecut.Database.DatabaseHelper;
 import com.example.lifecut.JsonPlacement.JsonPlaceHolderApi;
-import com.example.lifecut.ObjectFiles.Chat;
 import com.example.lifecut.graphitems.BarChartItem;
 import com.example.lifecut.graphitems.ChartItem;
 import com.example.lifecut.graphitems.LineChartItem;

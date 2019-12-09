@@ -1,4 +1,4 @@
-package com.example.lifecut.ObjectFiles;
+package com.example.lifecut;
 
 public class UserSign {
     String username;
