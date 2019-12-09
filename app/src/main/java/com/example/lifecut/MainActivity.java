@@ -22,7 +22,6 @@ import android.widget.Toast;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
-import com.example.lifecut.Database.DatabaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.microsoft.projectoxford.face.FaceServiceClient;
 import com.microsoft.projectoxford.face.FaceServiceRestClient;
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements
     private DjangoData djangoData;
 
     //Database
-    DatabaseHelper mDatabaseHelper;
+    //DatabaseHelper mDatabaseHelper;
 
     private TextView title;
 
@@ -127,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements
         detectionProgressDialog = new ProgressDialog(this);
 
         //Database
-        mDatabaseHelper = new DatabaseHelper(this);
+        //mDatabaseHelper = new DatabaseHelper(this);
 
     }
 
@@ -210,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements
                                     url = (String) resultData.get("url");
                                     s.setUrl(url);
                                     //Toast.makeText(getApplication(), s.getUrl(), Toast.LENGTH_LONG).show();
-                                    AddData(s);
+                                    //AddData(s);
                                     djangoData = new DjangoData(s.comment, s.anger, s.contempt, s.disgust, s.fear, s.happiness, s.neutral, s.sadness, s.surprise, s.url, s.mainEmotion);
                                     //Toast.makeText(getApplication(), tok, Toast.LENGTH_LONG).show();
                                     PostInfo(djangoData);
@@ -409,7 +408,7 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     //Add to to database
-    public void AddData(PostEmotion data) {
+    /*public void AddData(PostEmotion data) {
         boolean insertData = mDatabaseHelper.addData(data.comment, data.date, data.url, data.anger, data.contempt, data.disgust, data.fear, data.happiness, data.neutral, data.sadness, data.surprise, data.mainEmotion);
 
         if (insertData) {
@@ -417,7 +416,7 @@ public class MainActivity extends AppCompatActivity implements
         } else {
             Toast.makeText(getApplication(), "Error" , Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
     //Switch around navigation on the bottom of the screen
     private BottomNavigationView.OnNavigationItemSelectedListener nalistener =

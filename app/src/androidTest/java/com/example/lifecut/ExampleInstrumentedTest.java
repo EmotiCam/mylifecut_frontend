@@ -1,4 +1,4 @@
-package com.example.lifeforcut;
+package com.example.lifecut;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.lifeforcut", appContext.getPackageName());
+        assertEquals("com.example.lifecut", appContext.getPackageName());
     }
 }

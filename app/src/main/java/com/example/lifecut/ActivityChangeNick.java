@@ -1,5 +1,6 @@
 package com.example.lifecut;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -109,9 +110,9 @@ public class ActivityChangeNick extends AppCompatActivity {
                 }
 
                 Log.i(TAG, response.body().nickname);
-                //Intent intent = new Intent(getApplication(), MainActivity.class);
-                //intent.putExtra("EXTRA_SESSION_ID", token);
-                //startActivity(intent);
+                Intent intent = new Intent(getApplication(), MainActivity.class);
+                intent.putExtra("EXTRA_SESSION_ID", token);
+                startActivity(intent);
 
                 //get data
                 //List<Information> information = response.body();

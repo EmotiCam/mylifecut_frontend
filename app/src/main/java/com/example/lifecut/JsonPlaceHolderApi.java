@@ -38,7 +38,7 @@ public interface JsonPlaceHolderApi {
     @POST("api/v1/profiles/")
     Call<Information>createProfile(@Body Information post, @Header("Authorization") String authToken);
 
-    @PATCH("api/v1/profiles/{id}")
+    @PATCH("api/v1/profiles/{id}/")
     Call<Information>changeProfile(@Path ("id") int id, @Body Information post, @Header("Authorization") String authToken);
 
     @GET("api/v1/profiles/")

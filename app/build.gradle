@@ -1,29 +1,96 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: 'com.android.application'
 
-buildscript {
-    repositories {
-        google()
-        jcenter()
-        
+android {
+    packagingOptions {
+        exclude 'META-INF/proguard/androidx-annotations.pro'
     }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.1'
-        
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+    }
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.contoso.facetutorial"
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.4.3"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled true
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        jcenter()
-        maven { url 'https://jitpack.io' }
-        
-    }
-}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+    implementation "androidx.cardview:cardview:1.0.0-rc02"
+    implementation "com.google.android:flexbox:0.3.2"
+    implementation "androidx.appcompat:appcompat:1.0.0-rc02"
+    implementation "com.google.android.material:material:1.0.0-rc01"
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    //MS azure API
+    implementation 'com.microsoft.projectoxford:face:1.4.3'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+
+    def archVersion = '2.0.0-rc01'
+    implementation "androidx.lifecycle:lifecycle-extensions:${archVersion}"
+    implementation "androidx.lifecycle:lifecycle-common-java8:${archVersion}"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:${archVersion}"
+
+    // Room
+    implementation "androidx.room:room-runtime:${archVersion}"
+    annotationProcessor "androidx.room:room-compiler:${archVersion}"
+
+    // Cloudinary
+    implementation "com.cloudinary:cloudinary-android:1.25.0"
+
+    // Picasso
+    implementation ("com.squareup.picasso:picasso:2.71828"){
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'exifinterface'
+    }
+    // Gson
+    implementation "com.google.code.gson:gson:2.8.5"
+
+    // Retrofit
+    def retrofitVersion = '2.3.0'
+    implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-scalars:${retrofitVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
+
+    // Test helpers for LiveData
+    testImplementation "androidx.arch.core:core-testing:${archVersion}"
+
+    // Test helpers for Room
+    testImplementation "androidx.room:room-testing:${archVersion}"
+
 }
