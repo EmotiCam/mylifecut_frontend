@@ -93,7 +93,7 @@ public class ActivityChangeNick extends AppCompatActivity {
     }*/
 
     //Get information from Django
-    public void updateNick(String nickname, String comment, String gender) {
+    public void updateNick(String comment, String nickname, String gender) {
 
         String tk = "TOKEN " + token;
         Information info = new Information(comment, nickname, gender);
