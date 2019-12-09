@@ -643,9 +643,12 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     }
 
 
+    //bar graph
     private BarData generateDataBar(int cnt) {
 
         float[] val = {(float) happinessr, (float) sadnessr, (float) surpriser, (float) fearr, (float) neutralr, (float) contemptr, (float) angerr, (float) disgustr};
+
+        String[] emotions = {"Happy", "Sad", "Surprise", "Fear", "Neutral", "Contempt", "Anger", "Disgust"};
         ArrayList<BarEntry> entries = new ArrayList<>();
 
         for (int i = 0; i < 8; i++) {
@@ -906,6 +909,8 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
             }
         });
     }
+
+
 
 
 }

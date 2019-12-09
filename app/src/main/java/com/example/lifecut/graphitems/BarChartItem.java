@@ -12,6 +12,7 @@ import com.github.mikephil.charting.components.XAxis.XAxisPosition;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.ChartData;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 public class BarChartItem extends ChartItem {
 
@@ -53,20 +54,19 @@ public class BarChartItem extends ChartItem {
         holder.chart.setDrawGridBackground(false);
         holder.chart.setDrawBarShadow(false);
 
+        String[] emotions = {"Happy", "Sad", "Surprise", "Fear", "Neutral", "Cont", "Anger", "Disgust"};
         XAxis xAxis = holder.chart.getXAxis();
         xAxis.setPosition(XAxisPosition.BOTTOM);
-        //xAxis.setTypeface(mTf);
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(emotions));
         xAxis.setDrawGridLines(false);
         xAxis.setDrawAxisLine(true);
 
         YAxis leftAxis = holder.chart.getAxisLeft();
-       // leftAxis.setTypeface(mTf);
         leftAxis.setLabelCount(5, false);
         leftAxis.setSpaceTop(20f);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
         YAxis rightAxis = holder.chart.getAxisRight();
-        //rightAxis.setTypeface(mTf);
         rightAxis.setLabelCount(5, false);
         rightAxis.setSpaceTop(20f);
         rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
@@ -78,7 +78,7 @@ public class BarChartItem extends ChartItem {
         holder.chart.setFitBars(true);
 
         // do not forget to refresh the chart
-//        holder.chart.invalidate();
+        //holder.chart.invalidate();
         holder.chart.animateY(700);
 
         return convertView;
@@ -87,4 +87,5 @@ public class BarChartItem extends ChartItem {
     private static class ViewHolder {
         BarChart chart;
     }
+
 }
