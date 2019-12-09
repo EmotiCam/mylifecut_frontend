@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.lifecut.JsonPlacement.JsonPlaceHolderApi;
+
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;

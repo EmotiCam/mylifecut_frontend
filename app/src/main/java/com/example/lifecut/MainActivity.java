@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
+import com.example.lifecut.JsonPlacement.JsonPlaceHolderApi;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.microsoft.projectoxford.face.FaceServiceClient;
 import com.microsoft.projectoxford.face.FaceServiceRestClient;

@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lifecut.JsonPlacement.JsonPlaceHolderApi;
 import com.example.lifecut.Picasso.RoundTransformation;
 import com.squareup.picasso.Picasso;
 

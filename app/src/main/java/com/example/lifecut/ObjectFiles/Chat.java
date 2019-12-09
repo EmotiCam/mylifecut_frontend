@@ -1,4 +1,4 @@
-package com.example.lifecut;
+package com.example.lifecut.ObjectFiles;
 
 public class Chat {
     String text;
