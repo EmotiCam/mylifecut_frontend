@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Bobby"
+            android:text="Name"
             android:textAlignment="center"
             android:textSize="20sp" />
 
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:fontFamily="@font/montserrat_regular"
-        android:text="Hi My name is _______ Come visit me in California"
+        android:text="Welcome to the Life4Cut Life. Feel free to test out your emotions!"
         android:textAlignment="center"
         android:textSize="16sp" />
     </RelativeLayout>
@@ -96,7 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="100\n Photos"
+            android:text="0\n Photos"
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_weight="1"/>
@@ -117,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
-            android:text="100\n Comments"
+            android:text="0\n Comments"
             android:textAlignment="center"
             android:textSize="20sp"
             android:layout_weight="1"/>
@@ -139,7 +139,7 @@
             android:layout_row="0"
             android:layout_weight="1"
             android:fontFamily="@font/montserrat_bold"
-            android:text="24\n Records"
+            android:text="0\n Records"
             android:textAlignment="center"
             android:textSize="20sp" />
 
