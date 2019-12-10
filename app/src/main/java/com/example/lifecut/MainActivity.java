@@ -50,9 +50,9 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-// </snippet_imports>
-// <snippet_face_imports>
-// </snippet_face_imports>
+//Controls data coming from Camera, About, Home, and Archive Fragment
+//Sends data by REST Client to Django Server in Json Format
+//Creates top menu and bottom navigators for switches to other fragments
 
 public class MainActivity extends AppCompatActivity implements
         CameraFragment.FragmentCamListener, CameraFragment.FragmentCamListenerSave,
@@ -340,6 +340,7 @@ public class MainActivity extends AppCompatActivity implements
                                         "Detection Finished. Nothing detected");
                                 return null;
                             }
+
                             publishProgress(String.format(
                                     "Detection Finished. %d face(s) detected",
                                     result.length));
@@ -371,9 +372,15 @@ public class MainActivity extends AppCompatActivity implements
                         }
                         if (result == null) return;
 
-                        //send face information back to Camera Fragment
-                        output = new ImageFace(imageBitmap, result);
-                        CameraFragment.updateCamData(output);
+                        if(result.length!=0){
+                            //send face information back to Camera Fragment
+                            output = new ImageFace(imageBitmap, result);
+                            CameraFragment.updateCamData(output);
+                        }
+                        else{
+                            Toast.makeText(getApplication(), "Unable to Detect Face", Toast.LENGTH_LONG).show();
+                        }
+
 
 
                     }

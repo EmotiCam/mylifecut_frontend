@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity
     public void PostSignup(SignupInfo usr){
 
         UserSign post = new UserSign(usr.email, usr.password, usr.confirm);
-        Toast.makeText(getApplication(), usr.email, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplication(), usr.email, Toast.LENGTH_LONG).show();
         Call<User> call =jsonPlaceHolderApi.registration(post);
         call.enqueue(new Callback<User>() {
             @Override
@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity
 
                 User resp = new User(response.body().getKey());
                 token = response.body().getKey();
-                Toast.makeText(getApplication(), resp.getKey() , Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplication(), "Registration Complete" , Toast.LENGTH_LONG).show();
                 getSupportFragmentManager().beginTransaction().replace(R.id.category_logincontainer, new InformationFragment()).commit();
 
             }

@@ -7,9 +7,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.net.Uri;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,6 @@ import com.microsoft.projectoxford.face.contract.Emotion;
 import com.microsoft.projectoxford.face.contract.Face;
 import com.microsoft.projectoxford.face.contract.FaceRectangle;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -34,13 +34,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.ContentValues.TAG;
 
 
+//Fragment for taking picture and extracting emotion from user
 public class CameraFragment extends Fragment {
 
-
     private static ImageView imageView;
-    private  static PostEmotion post;
+    private static PostEmotion post;
     private static TextView emotion;
     private static TextView time;
     private static FaceInfo faceInfo;
@@ -55,16 +56,16 @@ public class CameraFragment extends Fragment {
 
     //FaceInfo faceInfo;
 
-    private final int PICK_IMAGE = 1;
+    private final int TAKE_PICTURE = 1;
     private ProgressDialog detectionProgressDialog;
     TextView title;
 
     //interface to sent bitmap data to MainActivity
-    public interface FragmentCamListener{
+    public interface FragmentCamListener {
         void onInputCamSent(Bitmap input);
     }
 
-    public interface FragmentCamListenerSave{
+    public interface FragmentCamListenerSave {
         void onInputCamSentFinal(PostEmotion postEmotion);
     }
 
@@ -73,16 +74,16 @@ public class CameraFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_camera, container, false);
 
-        title = (TextView)getActivity().findViewById(R.id.main_text_title);
+        title = (TextView) getActivity().findViewById(R.id.main_text_title);
         title.setText("Camera");
 
-        picture = (Button)v.findViewById(R.id.picture);
-        send = (Button)v.findViewById(R.id.save);
-        imageView = (ImageView)v.findViewById(R.id.imageView1);
-        emotion = (TextView)v.findViewById(R.id.emotion);
-        time = (TextView)v.findViewById(R.id.date);
+        picture = (Button) v.findViewById(R.id.picture);
+        send = (Button) v.findViewById(R.id.save);
+        imageView = (ImageView) v.findViewById(R.id.imageView1);
+        emotion = (TextView) v.findViewById(R.id.emotion);
+        time = (TextView) v.findViewById(R.id.date);
         text = (EditText) v.findViewById(R.id.comment);
-        context=getActivity();
+        context = getActivity();
 
         //Current Date
         Date c = Calendar.getInstance().getTime();
@@ -97,10 +98,11 @@ public class CameraFragment extends Fragment {
         picture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-                    takePictureIntent.putExtra("android.intent.extras.CAMERA_FACING", 1);
-                    startActivityForResult(takePictureIntent, PICK_IMAGE);
+
+                Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePicture.resolveActivity(getActivity().getPackageManager()) != null) {
+                    takePicture.putExtra("android.intent.extras.CAMERA_FACING", 1);
+                    startActivityForResult(takePicture, TAKE_PICTURE);
                 }
 
             }
@@ -109,9 +111,9 @@ public class CameraFragment extends Fragment {
         detectionProgressDialog = new ProgressDialog(getActivity().getApplicationContext());
 
         //send all data from CameraFragment to MainActivity
-        send.setOnClickListener(new View.OnClickListener(){
+        send.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 faceInfo.setComment(text.getText().toString());
                 post.setComment(text.getText().toString());
                 //send info to MainActivity to be sent to backend
@@ -129,62 +131,56 @@ public class CameraFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
+        if (requestCode == TAKE_PICTURE && resultCode == RESULT_OK) {
 
-                Bundle extras = data.getExtras();
-                Bitmap bitmap = (Bitmap) extras.get("data");
-                ImageView imageView = (ImageView)getActivity().findViewById(R.id.imageView1);
+            Bundle extras = data.getExtras();
+            Bitmap bitmap = (Bitmap) extras.get("data");
+            ImageView imageView = (ImageView) getActivity().findViewById(R.id.imageView1);
 
-                imageView.setImageBitmap(bitmap);
+            imageView.setImageBitmap(bitmap);
 
-                //save image
-                faceInfo.setFace(bitmap);
-                post.setImage(bitmap);
+            //save image
+            faceInfo.setFace(bitmap);
+            post.setImage(bitmap);
 
-                //listener to MainActivity
-                listener.onInputCamSent(bitmap);
-                //Toast.makeText(getActivity(), "Hello" + result.image, Toast.LENGTH_SHORT).show();
+            //listener to MainActivity
+            listener.onInputCamSent(bitmap);
+            //Toast.makeText(getActivity(), "Hello" + result.image, Toast.LENGTH_SHORT).show();
 
         }
     }
-    private Bitmap convert_UriToBitmap(Uri selectedURI) throws IOException {
-        return (Bitmap) MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), selectedURI);
-    }
-
 
 
     //send context
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof FragmentCamListener){
+        if (context instanceof FragmentCamListener) {
             listener = (FragmentCamListener) context;
-        }
-        else{
+        } else {
             throw new RuntimeException(context.toString() + "must implement fragment listener");
         }
-        if(context instanceof FragmentCamListenerSave){
+        if (context instanceof FragmentCamListenerSave) {
             listenerSave = (FragmentCamListenerSave) context;
-        }
-        else{
+        } else {
             throw new RuntimeException(context.toString() + "must implement fragment listener");
         }
     }
 
     @Override
-    public void onDetach(){
+    public void onDetach() {
         super.onDetach();
-        listener =null;
+        listener = null;
         listenerSave = null;
     }
 
     //Recieve data bitmap and image data from main activity
-    public static void updateCamData(ImageFace result){
+    public static void updateCamData(ImageFace result) {
         List<Face> faces;
         faces = Arrays.asList(result.face);
         Bitmap img = result.image;
 
-        if(result.image!=null){
+        if (result.image != null) {
             faceInfo.setImage(result.image);
             post.setImage(result.image);
             imageView.setImageBitmap(
@@ -221,8 +217,7 @@ public class CameraFragment extends Fragment {
     }
 
     //send and save emotion
-    private static String getEmotion(Emotion emotion)
-    {
+    private static String getEmotion(Emotion emotion) {
         //save information
         faceInfo.setAnger(emotion.anger);
         faceInfo.setContempt(emotion.contempt);
@@ -245,43 +240,35 @@ public class CameraFragment extends Fragment {
         String emotionType = "";
         double emotionValue = 0.0;
 
-        if (emotion.anger > emotionValue)
-        {
+        if (emotion.anger > emotionValue) {
             emotionValue = emotion.anger;
             emotionType = "Anger";
         }
-        if (emotion.contempt > emotionValue)
-        {
+        if (emotion.contempt > emotionValue) {
             emotionValue = emotion.contempt;
             emotionType = "Contempt";
         }
-        if (emotion.disgust > emotionValue)
-        {
+        if (emotion.disgust > emotionValue) {
             emotionValue = emotion.disgust;
             emotionType = "Disgust";
         }
-        if (emotion.fear > emotionValue)
-        {
+        if (emotion.fear > emotionValue) {
             emotionValue = emotion.fear;
             emotionType = "Fear";
         }
-        if (emotion.happiness > emotionValue)
-        {
+        if (emotion.happiness > emotionValue) {
             emotionValue = emotion.happiness;
             emotionType = "Happiness";
         }
-        if (emotion.neutral > emotionValue)
-        {
+        if (emotion.neutral > emotionValue) {
             emotionValue = emotion.neutral;
             emotionType = "Neutral";
         }
-        if (emotion.sadness > emotionValue)
-        {
+        if (emotion.sadness > emotionValue) {
             emotionValue = emotion.sadness;
             emotionType = "Sadness";
         }
-        if (emotion.surprise > emotionValue)
-        {
+        if (emotion.surprise > emotionValue) {
             emotionValue = emotion.surprise;
             emotionType = "Surprise";
         }
@@ -289,6 +276,25 @@ public class CameraFragment extends Fragment {
         post.setMainEmotion(emotionType.toLowerCase());
         return String.format("%s: %f", emotionType, emotionValue);
         //return String.format("%s", emotionType);
+    }
+
+    private Camera openFrontFacingCameraGingerbread() {
+        int cameraCount = 0;
+        Camera cam = null;
+        Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+        cameraCount = Camera.getNumberOfCameras();
+        for (int camIdx = 0; camIdx < cameraCount; camIdx++) {
+            Camera.getCameraInfo(camIdx, cameraInfo);
+            if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+                try {
+                    cam = Camera.open(camIdx);
+                } catch (RuntimeException e) {
+                    Log.e(TAG, "Camera failed to open: " + e.toString());
+                }
+            }
+        }
+
+        return cam;
     }
 
 
