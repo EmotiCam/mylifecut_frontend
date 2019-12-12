@@ -35,7 +35,8 @@ public class ShowArchiveActivity extends AppCompatActivity {
                 transform(new RoundTransformation(20, 0)).
                 into(img);
 
-
     }
 
 }
+
+
